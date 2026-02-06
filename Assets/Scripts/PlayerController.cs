@@ -5,14 +5,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float speed = 10.0f;
     public InputAction moveAction;
+    public InputAction shootAction;
 
     public float xRange = 10;
 
-
+    public GameObject foodPrefabs;
 
     private void Awake()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+        shootAction = InputSystem.actions.FindAction("Shoot");
     }
 
     // Update is called once per frame
@@ -32,6 +34,18 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
+
+        if (shootAction.triggered)
+        {
+            Instantiate(foodPrefabs, transform.position, Quaternion.identity);
+        }
+
+
+        if (shootAction.IsPressed())
+        {
+            Instantiate(foodPrefabs, transform.position, Quaternion.identity);
+        }
+
     }
 
     private void OnDrawGizmos()
@@ -44,7 +58,8 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(new Vector3(-xRange, transform.position.y, transform.position.z), 
-                        (new Vector3(xRange, transform.position.y, transform.position.z)));
+                        (new Vector3(xRange, transform.position.y, transform.position.z))
+                        );
             
 
     }
