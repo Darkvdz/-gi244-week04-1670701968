@@ -40,13 +40,23 @@ public class PlayerController : MonoBehaviour
             Instantiate(foodPrefabs, transform.position, Quaternion.identity);
         }
 
-
         if (shootAction.IsPressed())
         {
             Instantiate(foodPrefabs, transform.position, Quaternion.identity);
         }
 
+
+        //Invoke("Shoot", 20.0f);
+
     }
+
+    //void Shoot()
+    //{
+    //    if (shootAction.IsPressed())
+    //    {
+    //        Instantiate(foodPrefabs, transform.position, Quaternion.identity);
+    //    }
+    //}
 
     private void OnDrawGizmos()
     {
@@ -57,9 +67,9 @@ public class PlayerController : MonoBehaviour
         //Gizmos.DrawLine(transform.position, Camera.main.transform.position);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector3(-xRange, transform.position.y, transform.position.z), 
-                        (new Vector3(xRange, transform.position.y, transform.position.z))
-                        );
+        Gizmos.DrawLine(
+                        new Vector3(-xRange, transform.position.y, transform.position.z), 
+                        (new Vector3(xRange, transform.position.y, transform.position.z)));
             
 
     }
